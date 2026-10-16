@@ -1,0 +1,85 @@
+# ==============================================================================
+# Doppio .gitignore
+# ==============================================================================
+
+# OS & Filesystem
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Rust & Cargo Build Artifacts
+/target/
+**/target/
+**/*.rs.bk
+*.so
+*.rlib
+*.dylib
+*.a
+
+# Solana & Private Key Security
+*-keypair.json
+*keypair*.json
+deploy-keypair.json
+id.json
+wallet.json
+secrets/
+
+# Environment & Config
+.env
+.env.*
+!.env.example
+
+# IDEs & Editors
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+*.bak
+
+# Flutter & Dart (Mobile App)
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.pub-cache/
+**/.pub/
+**/build/
+**/coverage/
+app.*.symbols
+app.*.map.json
+.widget_preview/
+
+# iOS / Xcode
+**/ios/Flutter/.last_build_id
+**/*.xcuserstate
+**/xcuserdata/
+**/DerivedData/
+**/*.ipa
+**/*.app
+
+# Android & Gradle
+**/.gradle/
+**/android/app/build/
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+**/local.properties
+*.keystore
+*.jks
+
+# Logs & Temporary Files
+*.log
+*.tmp
+scratch/
