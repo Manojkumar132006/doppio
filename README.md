@@ -32,23 +32,23 @@ Doppio is a non-custodial self-repaying credit protocol and neobank engine built
 ```mermaid
 flowchart TD
     subgraph ClientLayer ["📱 Client Layer: Doppio Mobile"]
-        User([User]) -->|Biometrics: FaceID / TouchID| Passkey[Passkey / WebAuthn Keypair]
-        Passkey -->|Scoped POS Session| AutoSign[Instant Authorization]
-        User -->|NFC Tap at POS Terminal| ApplePay[Apple Pay / Google Wallet]
-        User -->|Camera Scan| QRScanner[Scan-to-Pay: UPI / Solana Pay QR]
+        User(["User"]) -->|"Biometrics: FaceID / TouchID"| Passkey["Passkey / WebAuthn Keypair"]
+        Passkey -->|"Scoped POS Session"| AutoSign["Instant Authorization"]
+        User -->|"NFC Tap at POS Terminal"| ApplePay["Apple Pay / Google Wallet"]
+        User -->|"Camera Scan"| QRScanner["Scan-to-Pay: UPI / Solana Pay QR"]
     end
 
     subgraph FiatGateway ["💳 Fiat & Card Gateway"]
-        ApplePay -->|Visa / Mastercard Authorization| BaaS[BaaS Card Gateway: Stripe / Bridge]
-        BaaS -->|Webhook < 400ms| AuthWebhook[Doppio Authorizer Service]
-        AuthWebhook -->|Draw Credit (Tag 4)| CreditEngine[Pinocchio Credit Engine]
+        ApplePay -->|"Visa / Mastercard Authorization"| BaaS["BaaS Card Gateway: Stripe / Bridge"]
+        BaaS -->|"Webhook under 400ms"| AuthWebhook["Doppio Authorizer Service"]
+        AuthWebhook -->|"Draw Credit: Tag 4"| CreditEngine["Pinocchio Credit Engine"]
     end
 
-    subgraph OnChainCore ["⚡ Solana On-Chain Core (Pinocchio)"]
-        CreditEngine -->|Verifies 70% LTV & Records Debt| VaultPDA[VaultPosition PDA: 72B]
-        ConfigPDA[Config PDA: 64B] -->|Exchange Rate & Price Feed| CreditEngine
-        HarvestCrank[Automated Harvest Crank] -->|Harvest & Repay (Tag 5)| SelfRepay[Autonomous Debt Amortizer]
-        SelfRepay -->|Reduces Debt via Staking Yield| VaultPDA
+    subgraph OnChainCore ["⚡ Solana On-Chain Core: Pinocchio"]
+        CreditEngine -->|"Verifies 70% LTV & Records Debt"| VaultPDA["VaultPosition PDA: 72B"]
+        ConfigPDA["Config PDA: 64B"] -->|"Exchange Rate & Price Feed"| CreditEngine
+        HarvestCrank["Automated Harvest Crank"] -->|"Harvest & Repay: Tag 5"| SelfRepay["Autonomous Debt Amortizer"]
+        SelfRepay -->|"Reduces Debt via Staking Yield"| VaultPDA
     end
 ```
 
